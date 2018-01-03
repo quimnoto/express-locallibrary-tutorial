@@ -29,7 +29,7 @@ exports.index = function(req, res) {
 };
 
 // Display list of all books
-exports.book_list = function(req, res) {
+exports.book_list = function(req, res, next) {
   Book.find({}, 'title author')
  .populate('author')
  .exec(function (err, list_books) {

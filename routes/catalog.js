@@ -6,6 +6,7 @@ var book_controller = require('../controllers/bookController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
+var user_controller = require('../controllers/userController')
 
 /// BOOK ROUTES ///
 
@@ -113,5 +114,17 @@ router.get('/bookinstance/:id', book_instance_controller.bookinstance_detail);
 
 /* GET request for list of all BookInstance. */
 router.get('/bookinstances', book_instance_controller.bookinstance_list);
+
+/// USER ROUTES ///
+
+/* GET request for list of all users. */
+router.get('/users', user_controller.user_list)
+
+/* GET request for creating a User. NOTE This must come before route that displays BookInstance (uses id) */
+router.get('/user/create', user_controller.user_create_get);
+
+/* POST request for creating user. */
+router.post('/user/create', user_controller.user_create_post);
+
 
 module.exports = router;

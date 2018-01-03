@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='email') Email:
+      input#email.form-control(type='email', placeholder='email' name='email' required='true' value=(undefined===user ? '' : user.email))
+      label(for='username') User Name:
+      input#username.form-control(type='text', placeholder='user name' name='username' required='true' value=(undefined===user ? '' : user.username))
+      label(for='username') User Name:
+      input#username.form-control(type='text', placeholder='user name' name='username' required='true' value=(undefined===user ? '' : user.username))
+      label(for='password') Password:
+      input#password.form-control(type='password', placeholder='password' name='password' required='true' value=(undefined===user ? '' : user.password))
+      label(for='passwordConf') Password Confirmation:
+      input#passwordConf.form-control(type='password', placeholder='repeat password' name='passwordConf' required='true' value=(undefined===user ? '' : user.passwordConf))
+      button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg
